@@ -1,0 +1,42 @@
+{
+  "name": "nightcrawler",
+  "version": "1.0.0",
+  "description": "A simple data crawler that tracks fuel information and princing of every gas station in Brazil. Get the data from ANP (National Oil Agency).",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gas-tracker/nightcrawler.git"
+  },
+  "keywords": [
+    "anp",
+    "gas-tracker",
+    "nodejs"
+  ],
+  "author": "Marcio Mansur <mrabeloo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gas-tracker/nightcrawler/issues"
+  },
+  "homepage": "https://github.com/gas-tracker/nightcrawler#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
+    "config": "^1.25.1",
+    "express": "^4.15.2",
+    "lodash": "^4.17.4",
+    "pg": "^6.1.5",
+    "sequelize": "^3.30.4",
+    "tatooine": "0.0.25"
+  }
+}
