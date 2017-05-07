@@ -1,7 +1,6 @@
-'use strict';
-module.exports = (sequelize, DataType) => {
 
-  var Cities = sequelize.define('Cities', {
+module.exports = (sequelize, DataType) => {
+  const Cities = sequelize.define('Cities', {
 
     id: {
       type: DataType.INTEGER,
@@ -12,17 +11,20 @@ module.exports = (sequelize, DataType) => {
     name: {
       type: DataType.STRING,
       allowNull: false
+    },
+    anpName: {
+      type: DataType.STRING,
+      allowNull: false
     }
 
   }, {
 
     classMethods: {
       associate: (models) => {
-
         Cities.hasMany(models.Stations);
         Cities.hasMany(models.Statistics);
         Cities.belongsTo(models.States);
-       }
+      }
     },
     tableName: 'cities',
     timestamps: true,

@@ -14,5 +14,8 @@
     "user": "",
     "password": "",
     "sgbd": ""
+  },
+  "docker": {
+    "dbserver": "docker run --name db-container -e POSTGRES_PASSWORD=gastracker -e POSTGRES_USER=gastracker -p 5432:5432 -dt postgres:9.6.2"
   }
 }
