@@ -1,6 +1,5 @@
-'use strict';
-module.exports = (sequelize, DataType) => {
 
+module.exports = (sequelize, DataType) => {
   var Fuels = sequelize.define('Fuels', {
 
     id: {
@@ -18,7 +17,6 @@ module.exports = (sequelize, DataType) => {
 
     classMethods: {
       associate: (models) => {
-
         Fuels.hasMany(models.Stations);
         Fuels.hasMany(models.Statistics);
       }

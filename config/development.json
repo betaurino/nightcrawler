@@ -9,11 +9,12 @@
     "stations": "http://www.anp.gov.br/preco/prc/Resumo_Semanal_Posto.asp"
   },
   "db": {
-    "name": "",
-    "host": "",
-    "user": "",
-    "password": "",
-    "sgbd": ""
+    "name": "gastracker",
+    "host": "localhost",
+    "user": "gastracker",
+    "password": "gastracker",
+    "sgbd": "postgres",
+    "port": 5432
   },
   "docker": {
     "dbserver": "docker run --name db-container -e POSTGRES_PASSWORD=gastracker -e POSTGRES_USER=gastracker -p 5432:5432 -dt postgres:9.6.2"

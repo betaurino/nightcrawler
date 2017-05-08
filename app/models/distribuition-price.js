@@ -1,8 +1,5 @@
-'use strict';
-
 module.exports = (sequelize, DataType) => {
-
-  let DistribuitionsPrices = sequelize.define('DistribuitionsPrices', {
+  const DistribuitionsPrices = sequelize.define('DistribuitionsPrices', {
 
     id: {
       type: DataType.INTEGER,
@@ -31,7 +28,6 @@ module.exports = (sequelize, DataType) => {
 
     classMethods: {
       associate: (models) => {
-
         DistribuitionsPrices.belongsTo(models.Statistics);
       }
     },

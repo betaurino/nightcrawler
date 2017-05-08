@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataType) => {
   const Weeks = sequelize.define('Weeks', {
 

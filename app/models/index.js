@@ -21,11 +21,14 @@ const db = {
   models: {}
 };
 
+const dir = path.join(__dirname, '/');
   // read all models and add them to "db" object and sequelize module
-fs.readdirSync(__dirname).forEach((file) => {
-  const modelDir = path.join(__dirname, file);
-  const model = sequelize.import(modelDir);
-  db.models[model.name] = model;
+fs.readdirSync(dir).forEach((file) => {
+  if (file !== 'index.js') {
+    const modelDir = path.join(dir, file);
+    const model = sequelize.import(modelDir);
+    db.models[model.name] = model;
+  }
 });
 
 Object.keys(db.models).forEach((key) => {

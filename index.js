@@ -2,13 +2,12 @@
 const Express = require('express');
 const config = require('config');
 const bodyParser = require('body-parser');
+const db = require('./app/models');
+
+const cities = require('./app/scrapers/cities');
 
 const app = Express();
 const port = process.env.PORT || config.http.port;
-
-// tests
-const index = require('./app/scrapers/index');
-
 
 // Setting default port
 app.set('port', port);
@@ -23,12 +22,14 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 });
 
-app.listen(app.get('port'), async (err) => {
-  if (err) { return console.log(`Server error: ${err}`); }
+console.log('Creating database...');
 
+db.sequelize.sync({ force: true }).done(() => {
+  app.listen(app.get('port'), async (err) => {
+    if (err) { return console.log(`Server error: ${err}`); }
 
-  console.log(`Server up, port: ${port}`);
+    console.log(`Server up, port: ${port}`);
 
-  const data = await index();
-  return console.log(data);
+    await cities();
+  });
 });
