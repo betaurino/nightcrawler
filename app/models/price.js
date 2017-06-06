@@ -7,16 +7,21 @@ module.exports = (sequelize, DataType) => {
       autoIncrement: true,
       allowNull: false
     },
+    fuelStationId: {
+      type: DataType.INTEGER,
+      references: {
+        model: 'fuel_stations',
+        key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      }
+    },
     sellPrice: {
       type: DataType.DECIMAL(10, 3),
       allowNull: false
     },
     buyPrice: {
       type: DataType.DECIMAL(10, 3),
-      allowNull: true
-    },
-    saleMode: {
-      type: DataType.STRING(10),
       allowNull: true
     },
     provider: {
@@ -32,8 +37,7 @@ module.exports = (sequelize, DataType) => {
 
     classMethods: {
       associate: (models) => {
-        Prices.belongsTo(models.Stations);
-        Prices.belongsTo(models.Weeks);
+        Prices.belongsTo(models.FuelStations);
       }
     },
     tableName: 'prices',

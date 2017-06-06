@@ -8,6 +8,15 @@ module.exports = (sequelize, DataType) => {
       autoIncrement: false,
       allowNull: false
     },
+    stateId: {
+      type: DataType.INTEGER,
+      references: {
+        model: 'states',
+        key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      }
+    },
     name: {
       type: DataType.STRING,
       allowNull: false
@@ -22,7 +31,6 @@ module.exports = (sequelize, DataType) => {
     classMethods: {
       associate: (models) => {
         Cities.hasMany(models.Stations);
-        Cities.hasMany(models.Statistics);
         Cities.belongsTo(models.States);
       }
     },

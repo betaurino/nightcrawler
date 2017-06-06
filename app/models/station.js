@@ -7,6 +7,15 @@ module.exports = (sequelize, DataType) => {
       autoIncrement: true,
       allowNull: false
     },
+    cityId: {
+      type: DataType.INTEGER,
+      references: {
+        model: 'cities',
+        key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      }
+    },
     name: {
       type: DataType.STRING,
       allowNull: false
@@ -37,8 +46,8 @@ module.exports = (sequelize, DataType) => {
     classMethods: {
       associate: (models) => {
         Stations.hasMany(models.Prices);
+        Stations.hasMany(models.FuelStations);
         Stations.belongsTo(models.Cities);
-        Stations.belongsTo(models.Fuels);
       }
     },
     tableName: 'stations',

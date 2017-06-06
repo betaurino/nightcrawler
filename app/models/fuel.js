@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, DataType) => {
-  var Fuels = sequelize.define('Fuels', {
+  const Fuels = sequelize.define('Fuels', {
 
     id: {
       type: DataType.INTEGER,
@@ -17,8 +17,8 @@ module.exports = (sequelize, DataType) => {
 
     classMethods: {
       associate: (models) => {
-        Fuels.hasMany(models.Stations);
-        Fuels.hasMany(models.Statistics);
+        Fuels.hasMany(models.FillEntries);
+        Fuels.hasMany(models.FuelStations);
       }
     },
     tableName: 'fuels',
