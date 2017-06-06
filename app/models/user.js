@@ -1,30 +1,34 @@
-
 module.exports = (sequelize, DataType) => {
-  const Fuels = sequelize.define('Fuels', {
-
+  const Users = sequelize.define('Users', {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
-      autoIncrement: false,
+      autoIncrement: true,
       allowNull: false
     },
-    description: {
+    name: {
+      type: DataType.STRING,
+      allowNull: false
+    },
+    email: {
+      type: DataType.STRING,
+      allowNull: false
+    },
+    password: {
       type: DataType.STRING,
       allowNull: false
     }
-
   }, {
 
     classMethods: {
       associate: (models) => {
-        Fuels.hasMany(models.FillEntries);
-        Fuels.hasMany(models.FuelStations);
+        Users.hasMany(models.Vehicles);
       }
     },
-    tableName: 'fuels',
+    tableName: 'users',
     timestamps: true,
     paranoid: true
   });
 
-  return Fuels;
+  return Users;
 };

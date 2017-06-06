@@ -1,59 +1,63 @@
 module.exports = (sequelize, DataType) => {
-  const Stations = sequelize.define('Stations', {
-
+  const FillEntries = sequelize.define('FillEntries', {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
-    cityId: {
+    vehicleId: {
       type: DataType.INTEGER,
       references: {
-        model: 'cities',
+        model: 'vehicles',
         key: 'id',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       }
     },
-    name: {
+    fuelId: {
+      type: DataType.INTEGER,
+      references: {
+        model: 'fuels',
+        key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      }
+    },
+    gasStation: {
       type: DataType.STRING,
       allowNull: false
     },
-    address: {
-      type: DataType.STRING,
-      allowNull: false
-    },
-    latitude: {
+    quantity: {
       type: DataType.FLOAT,
       allowNull: false
     },
-    longitude: {
+    total: {
       type: DataType.FLOAT,
       allowNull: false
     },
-    area: {
-      type: DataType.STRING,
+    unity: {
+      type: DataType.ENUM(
+        'liters',
+        'gallons',
+        'cylinders',
+        'cubic_meters',
+        'quilograms'
+      ),
       allowNull: false
-    },
-    flag: {
-      type: DataType.STRING,
-      allowNull: true
     }
-
   }, {
 
     classMethods: {
       associate: (models) => {
-        Stations.hasMany(models.Prices);
-        Stations.hasMany(models.FuelStations);
-        Stations.belongsTo(models.Cities);
+        FillEntries.belongsTo(models.Vehicles);
+        FillEntries.belongsTo(models.Fuels);
       }
     },
-    tableName: 'stations',
+    tableName: 'fill_entries',
     timestamps: true,
     paranoid: true
   });
 
-  return Stations;
+  return FillEntries;
 };

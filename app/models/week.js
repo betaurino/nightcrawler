@@ -1,7 +1,5 @@
-'use strict';
 module.exports = (sequelize, DataType) => {
-
-  var Weeks = sequelize.define('Weeks', {
+  const Weeks = sequelize.define('Weeks', {
 
     id: {
       type: DataType.INTEGER,
@@ -18,7 +16,6 @@ module.exports = (sequelize, DataType) => {
 
     classMethods: {
       associate: (models) => {
-
         Weeks.hasMany(models.Statistics);
         Weeks.hasMany(models.Prices);
       }

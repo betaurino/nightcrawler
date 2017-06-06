@@ -1,43 +1,43 @@
-
 module.exports = (sequelize, DataType) => {
-  const Cities = sequelize.define('Cities', {
-
+  const Vehicles = sequelize.define('Vehicles', {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
-      autoIncrement: false,
+      autoIncrement: true,
       allowNull: false
     },
-    stateId: {
+    userId: {
       type: DataType.INTEGER,
       references: {
-        model: 'states',
+        model: 'users',
         key: 'id',
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       }
     },
-    name: {
+    model: {
       type: DataType.STRING,
       allowNull: false
     },
-    anpName: {
+    mark: {
+      type: DataType.STRING,
+      allowNull: false
+    },
+    plate: {
       type: DataType.STRING,
       allowNull: false
     }
-
   }, {
 
     classMethods: {
       associate: (models) => {
-        Cities.hasMany(models.Stations);
-        Cities.belongsTo(models.States);
+        Vehicles.belongsTo(models.Users);
       }
     },
-    tableName: 'cities',
+    tableName: 'vehicles',
     timestamps: true,
     paranoid: true
   });
 
-  return Cities;
+  return Vehicles;
 };

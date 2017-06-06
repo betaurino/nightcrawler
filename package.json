@@ -4,7 +4,8 @@
   "description": "A simple data crawler that tracks fuel information and princing of every gas station in Brazil. Get the data from ANP (National Oil Agency).",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "dev": "NODE_ENV=development node_modules/.bin/nodemon index.js",
+    "production": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,9 @@
     "config": "^1.25.1",
     "express": "^4.15.2",
     "lodash": "^4.17.4",
+    "nodemon": "^1.11.0",
     "pg": "^6.1.5",
+    "request-promise": "^4.2.0",
     "sequelize": "^3.30.4",
     "tatooine": "0.0.25"
   }

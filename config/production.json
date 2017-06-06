@@ -1,0 +1,18 @@
+{
+  "http": {
+    "port": 80,
+    "host": "localhost"
+  },
+  "anp": {
+    "index": "http://www.anp.gov.br/preco/prc/Resumo_Por_Estado_Index.asp",
+    "cities": "http://www.anp.gov.br/preco/prc/Resumo_Por_Estado_Municipio.asp",
+    "stations": "http://www.anp.gov.br/preco/prc/Resumo_Semanal_Posto.asp"
+  },
+  "db": {
+    "name": "",
+    "host": "",
+    "user": "",
+    "password": "",
+    "sgbd": ""
+  }
+}
