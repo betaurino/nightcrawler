@@ -60,8 +60,6 @@ module.exports = async () => {
           const request = $(this).children('td:nth-child(1)').find('a').attr('href');
           const indexed = request.substring(request.indexOf('\'') + 1);
           const city_request = indexed.slice(0, -3);
-
-          console.log(request, indexed, city_request);
         });
       });
     });

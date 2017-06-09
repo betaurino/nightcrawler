@@ -3,6 +3,7 @@ const Express = require('express');
 const config = require('config');
 const bodyParser = require('body-parser');
 const db = require('./app/models');
+const router = require('./app/routes');
 
 const cities = require('./app/scrapers/cities');
 
@@ -15,6 +16,7 @@ app.set('port', port);
 // Setting server configurations
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use('/', router);
 
 // enable CORS
 app.use((req, res, next) => {
@@ -24,12 +26,10 @@ app.use((req, res, next) => {
 
 console.log('Creating database...');
 
-db.sequelize.sync({ force: true }).done(() => {
+db.sequelize.sync().done(() => {
   app.listen(app.get('port'), async (err) => {
     if (err) { return console.log(`Server error: ${err}`); }
 
     console.log(`Server up, port: ${port}`);
-
-    await cities();
   });
 });

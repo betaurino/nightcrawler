@@ -16,7 +16,6 @@ module.exports = (sequelize, DataType) => {
 
     classMethods: {
       associate: (models) => {
-        Weeks.hasMany(models.Statistics);
         Weeks.hasMany(models.Prices);
       }
     },
